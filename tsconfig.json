@@ -5,8 +5,10 @@
         "outDir": "./dist/",
         "target": "ES2015",
         "module": "ESNext",
+        "sourceMap": true,
         "esModuleInterop": true,
         "declaration": true,
+        "declarationDir": "./dist/",
         "lib": [
             "DOM",
             "ES2017"
