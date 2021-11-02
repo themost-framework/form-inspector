@@ -1,5 +1,5 @@
 {
-  "name": "form-inspector",
+  "name": "@themost/form-inspector",
   "version": "1.0.0",
   "description": "MOST Web Framework JSON forms-to-model inspector",
   "main": "dist/index.js",
