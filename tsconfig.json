@@ -1,0 +1,21 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "outDir": "./dist/",
+        "target": "ES2015",
+        "module": "CommonJS",
+        "esModuleInterop": true,
+        "declaration": true,
+        "lib": [
+            "DOM",
+            "ES2017"
+        ]
+    },
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

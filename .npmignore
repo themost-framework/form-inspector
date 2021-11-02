@@ -1,0 +1,6 @@
+# test
+spec
+src/*.spec.ts
+
+# build
+rollup.config.js
