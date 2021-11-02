@@ -1,6 +1,7 @@
 # test
 spec
 src/*.spec.ts
+tsconfig.spec.json
 
 # build
 rollup.config.js
