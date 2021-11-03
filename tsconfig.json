@@ -8,6 +8,7 @@
         "sourceMap": true,
         "esModuleInterop": true,
         "declaration": true,
+        "moduleResolution": "node",
         "declarationDir": "./dist/",
         "lib": [
             "DOM",
@@ -15,7 +16,8 @@
         ]
     },
     "include": [
-        "src/**/*.ts"
+        "src/**/*.ts",
+        "src/**/*.d.ts"
     ],
     "exclude": [
         "node_modules",

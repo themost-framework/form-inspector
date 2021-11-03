@@ -1,0 +1,37 @@
+{
+    "properties": {
+        "version": "1.0",
+        "name": "PersonForm"
+    },
+    "components": [
+        {
+            "label": "First Name",
+            "tableView": true,
+            "key": "givenName",
+            "properties": {
+                "type": "Text"
+            },
+            "type": "textfield",
+            "input": true
+        },
+        {
+            "label": "Last Name",
+            "tableView": true,
+            "validate": {
+                "required": true,
+                "maxLength": 128
+            },
+            "key": "lastName",
+            "type": "textfield",
+            "input": true
+        },
+        {
+            "type": "button",
+            "label": "Submit",
+            "key": "submit",
+            "disableOnInvalid": true,
+            "input": true,
+            "tableView": false
+        }
+    ]
+}

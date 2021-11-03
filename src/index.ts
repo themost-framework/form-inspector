@@ -1,1 +1,2 @@
-export * from './FormInspector';
+export * from './JsonFormInspector';
+export * from './interfaces';
