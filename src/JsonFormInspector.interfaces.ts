@@ -5,7 +5,8 @@ export interface JsonForm {
         hidden?: boolean,
         inherits?: string,
         implements?: string
-    }
+    },
+    [k: string]: unknown;
 }
 
 export interface JsonFormComponent {

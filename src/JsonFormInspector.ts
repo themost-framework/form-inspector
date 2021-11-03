@@ -4,6 +4,10 @@ import { JsonForm, JsonFormComponentContainer } from './JsonFormInspector.interf
 import { JsonFormComponentInspector } from './JsonFormComponentInspector';
 import { RadioComponentInspector } from './RadioComponentInspector';
 import { SelectComponentInspector } from './SelectComponentInspector';
+import { SelectBoxesComponentInspector } from './SelectBoxesComponentInspector';
+import { DayComponentInspector } from './DayComponentInspector';
+import { TimeComponentInspector } from './TimeComponentInspector';
+import { DateTimeComponentInspector } from './DateTimeComponentInspector';
 
 const COMMON_ATTRIBUTES: DataFieldSchema[] = [
     {
@@ -55,12 +59,16 @@ export class JsonFormInspector {
             ['number', new JsonFormComponentInspector('Number')],
             ['password', new JsonFormComponentInspector('Text')],
             ['checkbox', new JsonFormComponentInspector('Boolean')],
+            ['selectboxes', new SelectBoxesComponentInspector()],
             ['select', new SelectComponentInspector()],
             ['radio', new RadioComponentInspector()],
             // advanced
             ['email', new JsonFormComponentInspector('Email')],
             ['url', new JsonFormComponentInspector('Url')],
             ['phoneNumber', new JsonFormComponentInspector('Text')],
+            ['datetime', new DateTimeComponentInspector()],
+            ['day', new DayComponentInspector()],
+            ['time', new TimeComponentInspector()],
             ['currency', new JsonFormComponentInspector('Number')],
             //
         ]);
