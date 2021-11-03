@@ -1,5 +1,4 @@
 import { DataFieldSchema } from './interfaces';
-import { JsonFormComponent } from './JsonFormInspector.interfaces';
 import { FormInspectorBase, FormComponentBase, CompositeComponentInspectorBase } from './FormInspector.interfaces';
 
 export class CompositeComponentInspector implements CompositeComponentInspectorBase {

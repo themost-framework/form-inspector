@@ -9,6 +9,8 @@ import { DayComponentInspector } from './DayComponentInspector';
 import { TimeComponentInspector } from './TimeComponentInspector';
 import { DateTimeComponentInspector } from './DateTimeComponentInspector';
 import { FormInspectorBase } from './FormInspector.interfaces';
+import { CompositeComponentInspector } from './CompositeComponentInspector';
+import { ColumnsComponentInspector } from './ColumnsComponentInspector';
 
 const COMMON_ATTRIBUTES: DataFieldSchema[] = [
     {
@@ -52,6 +54,7 @@ const COMMON_ATTRIBUTES: DataFieldSchema[] = [
 
 export class JsonFormInspector implements FormInspectorBase {
     public componentInspectors: Map<string, ComponentInspector>;
+    public compositeComponentInspectors: Map<string, CompositeComponentInspector>;
     constructor() {
         this.componentInspectors = new Map([
             // basic
@@ -72,6 +75,13 @@ export class JsonFormInspector implements FormInspectorBase {
             ['time', new TimeComponentInspector()],
             ['currency', new ComponentInspector('Number')],
             //
+        ]);
+        this.compositeComponentInspectors = new Map([
+            [ 'fieldset', new CompositeComponentInspector(this) ],
+            [ 'columns', new ColumnsComponentInspector(this) ],
+            [ 'panel', new CompositeComponentInspector(this) ],
+            [ 'well', new CompositeComponentInspector(this) ],
+            [ 'tabs', new CompositeComponentInspector(this) ],
         ]);
     }
     inspect(form: JsonForm) {
