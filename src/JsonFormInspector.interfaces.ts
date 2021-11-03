@@ -22,7 +22,8 @@ export interface JsonFormComponent {
     properties?: {
         type?: string;
         size?: number;
-    }
+    },
+    dataType?: string;
 }
 
 export interface JsonFormComponentContainer {

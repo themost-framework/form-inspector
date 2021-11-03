@@ -1,7 +1,9 @@
 import {Args} from '@themost/common';
 import { DataModelSchema, DataFieldSchema } from './interfaces';
-import { JsonForm, JsonFormComponentContainer, JsonFormComponent } from './JsonFormInspector.interfaces';
+import { JsonForm, JsonFormComponentContainer } from './JsonFormInspector.interfaces';
 import { JsonFormComponentInspector } from './JsonFormComponentInspector';
+import { RadioComponentInspector } from './RadioComponentInspector';
+import { SelectComponentInspector } from './SelectComponentInspector';
 
 const COMMON_ATTRIBUTES: DataFieldSchema[] = [
     {
@@ -44,8 +46,24 @@ const COMMON_ATTRIBUTES: DataFieldSchema[] = [
 ];
 
 export class JsonFormInspector {
+    public componentInspectors: Map<string, JsonFormComponentInspector>;
     constructor() {
-        //
+        this.componentInspectors = new Map([
+            // basic
+            ['textfield', new JsonFormComponentInspector('Text')],
+            ['textarea', new JsonFormComponentInspector('Note')],
+            ['number', new JsonFormComponentInspector('Number')],
+            ['password', new JsonFormComponentInspector('Text')],
+            ['checkbox', new JsonFormComponentInspector('Boolean')],
+            ['select', new SelectComponentInspector()],
+            ['radio', new RadioComponentInspector()],
+            // advanced
+            ['email', new JsonFormComponentInspector('Email')],
+            ['url', new JsonFormComponentInspector('Url')],
+            ['phoneNumber', new JsonFormComponentInspector('Text')],
+            ['currency', new JsonFormComponentInspector('Number')],
+            //
+        ]);
     }
     inspect(form: JsonForm) {
         if (form == null) {
@@ -86,50 +104,12 @@ export class JsonFormInspector {
         if (Array.isArray(container.components)) {
             // enumerate components
             container.components.forEach((item) => {
-                model.fields.push(new JsonFormComponentInspector().inspect(item));
+                const inspector = this.componentInspectors.get(item.type);
+                if (inspector) {
+                    model.fields.push(inspector.inspect(item));
+                }
             });
         }
         return model;
     }
-
-    inspectComponent(component: JsonFormComponent): DataFieldSchema {
-        const result: DataFieldSchema = {
-            name: component.key,
-            title: component.label,
-            nullable: false,
-            validation: {}
-        }
-        if (component.properties) {
-            // set type
-            if (component.properties.type) {
-                result.type = component.properties.type;
-            }
-            // set size
-            if (component.properties.size) {
-                result.size = component.properties.size;
-            }
-        }
-        if (component.validate) {
-            // set nullable
-            result.nullable = component.validate.required != null ? component.validate.required : false;
-            if (component.validate.maxLength) {
-                // set validation.maxLength
-                result.validation.maxLength = component.validate.maxLength;
-            }
-            if (component.validate.minLength) {
-                // set validation.minLength
-                result.validation.minLength = component.validate.minLength;
-            }
-            if (component.validate.pattern) {
-                // set validation.pattern
-                result.validation.pattern = component.validate.pattern;
-            }
-            if (component.validate.customMessage) {
-                // set validation.message
-                result.validation.message = component.validate.customMessage;
-            }
-        }
-        return result;
-    }
-
 }

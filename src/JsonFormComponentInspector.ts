@@ -2,12 +2,19 @@ import { DataFieldSchema } from './interfaces';
 import { JsonFormComponent } from './JsonFormInspector.interfaces';
 
 export class JsonFormComponentInspector {
+
+    constructor(protected type?: string) {
+    }
+
     inspect(component: JsonFormComponent): DataFieldSchema {
         const result: DataFieldSchema = {
             name: component.key,
             title: component.label,
             nullable: false,
             validation: {}
+        }
+        if (this.type) {
+            result.type = this.type;
         }
         if (component.properties) {
             // set type
