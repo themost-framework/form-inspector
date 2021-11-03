@@ -1,13 +1,14 @@
 import {Args} from '@themost/common';
 import { DataModelSchema, DataFieldSchema } from './interfaces';
 import { JsonForm, JsonFormComponentContainer } from './JsonFormInspector.interfaces';
-import { JsonFormComponentInspector } from './JsonFormComponentInspector';
+import { ComponentInspector } from './ComponentInspector';
 import { RadioComponentInspector } from './RadioComponentInspector';
 import { SelectComponentInspector } from './SelectComponentInspector';
 import { SelectBoxesComponentInspector } from './SelectBoxesComponentInspector';
 import { DayComponentInspector } from './DayComponentInspector';
 import { TimeComponentInspector } from './TimeComponentInspector';
 import { DateTimeComponentInspector } from './DateTimeComponentInspector';
+import { FormInspectorBase } from './FormInspector.interfaces';
 
 const COMMON_ATTRIBUTES: DataFieldSchema[] = [
     {
@@ -49,27 +50,27 @@ const COMMON_ATTRIBUTES: DataFieldSchema[] = [
     }
 ];
 
-export class JsonFormInspector {
-    public componentInspectors: Map<string, JsonFormComponentInspector>;
+export class JsonFormInspector implements FormInspectorBase {
+    public componentInspectors: Map<string, ComponentInspector>;
     constructor() {
         this.componentInspectors = new Map([
             // basic
-            ['textfield', new JsonFormComponentInspector('Text')],
-            ['textarea', new JsonFormComponentInspector('Note')],
-            ['number', new JsonFormComponentInspector('Number')],
-            ['password', new JsonFormComponentInspector('Text')],
-            ['checkbox', new JsonFormComponentInspector('Boolean')],
+            ['textfield', new ComponentInspector('Text')],
+            ['textarea', new ComponentInspector('Note')],
+            ['number', new ComponentInspector('Number')],
+            ['password', new ComponentInspector('Text')],
+            ['checkbox', new ComponentInspector('Boolean')],
             ['selectboxes', new SelectBoxesComponentInspector()],
             ['select', new SelectComponentInspector()],
             ['radio', new RadioComponentInspector()],
             // advanced
-            ['email', new JsonFormComponentInspector('Email')],
-            ['url', new JsonFormComponentInspector('Url')],
-            ['phoneNumber', new JsonFormComponentInspector('Text')],
+            ['email', new ComponentInspector('Email')],
+            ['url', new ComponentInspector('Url')],
+            ['phoneNumber', new ComponentInspector('Text')],
             ['datetime', new DateTimeComponentInspector()],
             ['day', new DayComponentInspector()],
             ['time', new TimeComponentInspector()],
-            ['currency', new JsonFormComponentInspector('Number')],
+            ['currency', new ComponentInspector('Number')],
             //
         ]);
     }

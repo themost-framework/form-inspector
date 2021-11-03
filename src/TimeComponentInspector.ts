@@ -1,8 +1,8 @@
-import { JsonFormComponentInspector } from './JsonFormComponentInspector'
+import { ComponentInspector } from './ComponentInspector'
 import { DataFieldSchema } from './interfaces';
 import { JsonFormComponent } from './JsonFormInspector.interfaces';
 
-export class TimeComponentInspector extends JsonFormComponentInspector {
+export class TimeComponentInspector extends ComponentInspector {
     constructor() {
         super();
     }

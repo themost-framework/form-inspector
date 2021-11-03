@@ -1,3 +1,5 @@
+import { DataFieldSchema } from './interfaces';
+
 export interface JsonForm {
     properties?: {
         name: string,

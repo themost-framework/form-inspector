@@ -1,5 +1,5 @@
 import typescript from '@rollup/plugin-typescript';
-
+import * as pkg from './package.json';
 export default [
     {
         input: 'src/index.ts',
@@ -8,6 +8,7 @@ export default [
             format: 'cjs',
             sourcemap: true
         },
+        external: Object.keys(pkg.dependencies),
         plugins: [typescript()]
     },
     {
@@ -17,6 +18,7 @@ export default [
             format: 'esm',
             sourcemap: true
         },
+        external: Object.keys(pkg.dependencies),
         plugins: [typescript()]
     }
 ];

@@ -1,4 +1,4 @@
-import { JsonFormComponentInspector } from './JsonFormComponentInspector'
+import { ComponentInspector } from './ComponentInspector'
 import { DataFieldSchema } from './interfaces';
 import { JsonFormComponent } from './JsonFormInspector.interfaces';
 
@@ -6,7 +6,7 @@ declare interface DateTimeComponent {
     enableTime?: boolean;
 }
 
-export class DateTimeComponentInspector extends JsonFormComponentInspector {
+export class DateTimeComponentInspector extends ComponentInspector {
     constructor() {
         super();
     }

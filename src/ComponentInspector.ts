@@ -1,7 +1,8 @@
 import { DataFieldSchema } from './interfaces';
 import { JsonFormComponent } from './JsonFormInspector.interfaces';
+import { ComponentInspectorBase } from './FormInspector.interfaces';
 
-export class JsonFormComponentInspector {
+export class ComponentInspector implements ComponentInspectorBase {
 
     constructor(protected type?: string) {
     }
