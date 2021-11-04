@@ -5,3 +5,13 @@ tsconfig.spec.json
 
 # build
 rollup.config.js
+tsconfig.json
+
+# dev
+.theia
+.vscode
+.idea
+.DS_Store
+
+# lint
+tslint.json
