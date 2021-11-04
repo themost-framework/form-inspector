@@ -11,6 +11,7 @@ import { DateTimeComponentInspector } from './DateTimeComponentInspector';
 import { FormInspectorBase } from './FormInspector.interfaces';
 import { CompositeComponentInspector } from './CompositeComponentInspector';
 import { ColumnsComponentInspector } from './ColumnsComponentInspector';
+import { SurveyComponentInspector } from './SurveyComponentInspector';
 
 const COMMON_ATTRIBUTES: DataFieldSchema[] = [
     {
@@ -77,6 +78,9 @@ export class JsonFormInspector implements FormInspectorBase {
             //
         ]);
         this.compositeComponentInspectors = new Map([
+            // advanced
+            ['survey', new SurveyComponentInspector(this)],
+            // layout
             [ 'fieldset', new CompositeComponentInspector(this) ],
             [ 'columns', new ColumnsComponentInspector(this) ],
             [ 'panel', new CompositeComponentInspector(this) ],
