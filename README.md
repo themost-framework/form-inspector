@@ -3,7 +3,7 @@ MOST Web Framework JSON forms-to-model generator
 
 ## Installation
 
-    npm i @universis/form-inspector
+    npm i @themost/form-inspector
 
 ## Usage
 
@@ -41,7 +41,7 @@ Use `JsonFormInspector` to extract a model definition based on a given JSON form
 
 and inspect model schema:
 
-    import { JsonFormInspector, DataModelSchema } from '@universis/form-inspector';
+    import { JsonFormInspector, DataModelSchema } from '@themost/form-inspector';
     const model = inspector.inspect(form1);
 
 with the following result:
