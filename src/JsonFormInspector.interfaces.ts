@@ -27,6 +27,7 @@ export interface JsonFormComponent {
         size?: number;
     },
     dataType?: string;
+    persistent?: boolean | string;
 }
 
 export interface JsonFormComponentContainer {

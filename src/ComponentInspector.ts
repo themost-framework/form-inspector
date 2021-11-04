@@ -11,7 +11,7 @@ export class ComponentInspector implements ComponentInspectorBase {
         const result: DataFieldSchema = {
             name: component.key,
             title: component.label,
-            nullable: false,
+            nullable: true,
             validation: {}
         }
         if (this.type) {
@@ -29,7 +29,9 @@ export class ComponentInspector implements ComponentInspectorBase {
         }
         if (component.validate) {
             // set nullable
-            result.nullable = component.validate.required != null ? component.validate.required : false;
+            if (Object.prototype.hasOwnProperty.call(component.validate, 'required')) {
+                result.nullable = !component.validate.required;
+            }
             if (component.validate.maxLength) {
                 // set validation.maxLength
                 result.validation.maxLength = component.validate.maxLength;
@@ -46,6 +48,10 @@ export class ComponentInspector implements ComponentInspectorBase {
                 // set validation.message
                 result.validation.message = component.validate.customMessage;
             }
+        }
+        // cleanup
+        if (Object.keys(result.validation).length === 0) {
+            delete result.validation;
         }
         return result;
     }

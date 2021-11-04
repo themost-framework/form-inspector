@@ -21,7 +21,7 @@ export class SurveyComponentInspector extends CompositeComponentInspector {
         let results: DataFieldSchema[] = []
         if (Array.isArray(cmp.questions)) {
             results = cmp.questions.map((question) => {
-                return new ComponentInspector().inspect({
+                return new ComponentInspector('Text').inspect({
                     label: question.label,
                     key: question.value,
                     properties: component.properties,

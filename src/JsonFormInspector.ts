@@ -87,10 +87,25 @@ export class JsonFormInspector implements FormInspectorBase {
         const container = form as JsonFormComponentContainer;
         if (Array.isArray(container.components)) {
             // enumerate components
-            container.components.forEach((item) => {
+            container.components.map((item) => {
+                // restore persistent property
+                if (Object.prototype.hasOwnProperty.call(item, 'persistent') === false) {
+                    item.persistent = true;
+                } else if (typeof item.persistent !== 'boolean') {
+                    item.persistent = (item.persistent !== 'client-only');
+                }
+                return item;
+            }).forEach((item) => {
                 const inspector = this.componentInspectors.get(item.type);
                 if (inspector) {
-                    model.fields.push(inspector.inspect(item));
+                    if (item.persistent) {
+                        model.fields.push(inspector.inspect(item));
+                    }
+                } else {
+                    const compositeInspector = this.compositeComponentInspectors.get(item.type);
+                    if (compositeInspector) {
+                        model.fields.push.apply(model.fields, compositeInspector.inspect(item));
+                    }
                 }
             });
         }
