@@ -1,5 +1,5 @@
 # @themost/form-inspector
-MOST Web Framework JSON forms-to-model schema generator
+MOST Web Framework JSON forms-to-model generator
 
 ## Installation
 
@@ -7,7 +7,7 @@ MOST Web Framework JSON forms-to-model schema generator
 
 ## Usage
 
-Use `JsonFormInspector` to generate a model based on a given JSON form:
+Use `JsonFormInspector` to extract a model definition based on a given JSON form:
 
     {
         "properties": {
