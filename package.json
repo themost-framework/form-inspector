@@ -1,6 +1,6 @@
 {
   "name": "@themost/form-inspector",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "MOST Web Framework JSON forms-to-model inspector",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
